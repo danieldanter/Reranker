@@ -1,0 +1,452 @@
+[
+  {
+    "id": "Q1",
+    "question": "Wer sind die Autoren bzw. Ansprechpartner des Handbuchs Prävention der Geldwäscherei und Terrorismusfinanzierung?",
+    "ground_truth": "Die Autoren bzw. Ansprechpartner sind Juraj Vicena und Christian Pflügler.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q2",
+    "question": "Welche Version des Handbuchs wurde am 30.03.2015 veröffentlicht und welche wesentlichen Änderungen wurden darin vorgenommen?",
+    "ground_truth": "Version 3.0 wurde am 30.03.2015 veröffentlicht. Wesentliche Änderungen waren die Klarstellung, dass bei Baraus- und anschließenden Bareinzahlungen eigener Kunden idR keine Belege erforderlich sind, die Aktualisierung der Liste der Compliance & AML AssistentInnen sowie die grundlegende Überarbeitung und Aktualisierung der Finanzsanktionen, insbesondere gegen Russland/Ukraine.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q3",
+    "question": "Was ist die Rolle des Geldwäscherei-Beauftragten bei der Eröffnung eines Kunden mit Offshore-Zusammenhang?",
+    "ground_truth": "Der Geldwäscherei-Beauftragte muss zuerst den Offshore-Zusammenhang prüfen und erst nach seiner Genehmigung darf ein Kunde mit Sitz in einem Offshore-Zusammenhang angelegt werden.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q4",
+    "question": "Welche Meldepflicht besteht bei Auszahlungen von Spareinlagen ohne Identitätsfeststellung gemäß § 6 Abs. 1 FM-GwG?",
+    "ground_truth": "Kreditinstitute müssen die Behörde unverzüglich von allen Auszahlungsanträgen von Spareinlagen informieren, wenn keine Identitätsfeststellung erfolgt ist und das Guthaben mindestens 15.000 Euro beträgt. Die Auszahlung darf erst nach Ablauf von 7 Kalendertagen erfolgen, sofern keine längere Frist von der Behörde angeordnet wird.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q5",
+    "question": "Welche Konsequenzen hat eine Verdachtsmeldung auf Geldwäscherei für das Kundenkonto?",
+    "ground_truth": "Das Kundenkonto wird gesperrt oder eingefroren, die Meldung erfolgt durch AML-Compliance, und es besteht Geheimhaltungspflicht gegenüber dem Kunden, um Ermittlungen nicht zu behindern.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q6",
+    "question": "Wie wird im Handbuch die Rolle der Compliance bei der Kommunikation mit Behörden im Verdachtsfall beschrieben?",
+    "ground_truth": "Die Kommunikation mit den Behörden erfolgt ausschließlich über die Compliance-Abteilung, um eine koordinierte und rechtssichere Abwicklung sicherzustellen.",
+    "type": "verständnis",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q7",
+    "question": "Was sind die Voraussetzungen für eine externe Verdachtsmeldung gemäß § 16 Abs. 1 FM-GwG?",
+    "ground_truth": "Es müssen Tatsachen vorliegen, aus denen ein Verdacht nachvollziehbar abgeleitet werden kann, beispielsweise ungewöhnliche Transaktionen oder ein Zusammenhang mit strafbaren Vortaten, Terrorismusfinanzierung oder unzulässigen Treuhandbeziehungen.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q8",
+    "question": "Welche Dokumente werden im Kapitel 24 als Beilagen zum Handbuch aufgeführt?",
+    "ground_truth": "Beilagen umfassen unter anderem Tatbestand Geldwäscherei & Terrorismusfinanzierung, EU- und EWR-Staaten, Offshore-Destinationen, FATF Risikoländerlisten, Compliance-Botschafter, Vertretungsbefugnismatrix, Legitimationsmatrix, Geldwäsche-Risikomatrix, Prozess Kunde werden in der HYPO NOE, Mittelherkunft Bareinzahlungen, Bestätigung des Steuerberaters und Übersicht Know-Your-Customer-Dokumentation.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q9",
+    "question": "Wie wird im Handbuch die Vorgehensweise bei internen Verdachtsmeldungen beschrieben?",
+    "ground_truth": "Kundenbetreuer melden Verdachtsmomente unverzüglich dem Geldwäscherei-Beauftragten, der den Sachverhalt prüft, gegebenenfalls weitere Informationen einholt und entscheidet, ob eine Meldung an die Behörden notwendig ist oder andere Maßnahmen ergriffen werden.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q10",
+    "question": "Welche Änderungen wurden in Version 3.3 vom 05.12.2017 umgesetzt?",
+    "ground_truth": "Umsetzung der Änderungen im Zusammenhang mit dem neuen Finanzmarkt-Geldwäschegesetz (FM-GwG) und Wirtschaftlicher-Eigentümer Registergesetz (WiEREG), Anpassungen bei Sorgfaltspflichten, Einführung neuer Ausweise, Aktualisierung der Risikoanalysen und Berücksichtigung der Panama-Papers im Kundenannahmeprozess.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q11",
+    "question": "Was versteht man unter der Subsidiaritätsregel bei der Feststellung des wirtschaftlichen Eigentümers?",
+    "ground_truth": "Aufgrund der Subsidiaritätsregel ist eine Antwort mit 'kein wirtschaftlicher Eigentümer' nicht mehr möglich; es muss stets ein wirtschaftlicher Eigentümer festgestellt werden, insbesondere bei Stiftungen.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q12",
+    "question": "Welche Maßnahmen sind bei sanktionierten Kunden laut Handbuch zu ergreifen?",
+    "ground_truth": "Es ist unverzüglich eine Meldung an die zuständige Behörde zu erstatten, Konten und Vermögenswerte sind zu sperren oder einzufrieren, und AML-Compliance setzt die weiteren Schritte um.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q13",
+    "question": "Wie wird im Handbuch die Geheimhaltungspflicht im Zusammenhang mit Verdachtsmeldungen beschrieben?",
+    "ground_truth": "Die Geheimhaltungspflicht verpflichtet dazu, den Kunden nicht über die Verdachtsmeldung zu informieren, um die Ermittlungen der Behörden nicht zu behindern.",
+    "type": "verständnis",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q14",
+    "question": "Welche Rolle spielt die Compliance-Abteilung bei der Sperre von Konten nach einer Verdachtsmeldung?",
+    "ground_truth": "Die Compliance-Abteilung ist verantwortlich für die Sperre der Konten gemäß den Fristen des FM-GwG nach einer Verdachtsmeldung.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q15",
+    "question": "Was sind die wichtigsten Inhalte des Kapitels 23.3 im Handbuch?",
+    "ground_truth": "Das Kapitel beschreibt die Voraussetzungen und den Ablauf der externen Verdachtsmeldung an Behörden bei Geldwäscherei, Terrorismusfinanzierung und unzulässigen Treuhandbeziehungen sowie die damit verbundenen Pflichten und Folgen.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q16",
+    "question": "Welche Dokumente sind für die Feststellung und Überprüfung der Identität von juristischen Personen erforderlich laut Handbuch?",
+    "ground_truth": "Es sind aktuelle Unterlagen zur Feststellung und Überprüfung der Identität juristischer Personen und deren wirtschaftlicher Eigentümer erforderlich, wobei die Aktualität der Dokumente besonders zu beachten ist.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q17",
+    "question": "Wie wird im Handbuch die Aktualisierungspflicht bei Geldwäsche-Kundenreviews geregelt?",
+    "ground_truth": "Die Aktualisierungspflichten werden in einem eigenen Kapitel zusammenfassend dargestellt; die bisherigen regelmäßigen Kreditreviews führen nicht mehr automatisch zu einer Aktualisierung, sondern es gelten risikobasierte Intervalle.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q18",
+    "question": "Welche Bedeutung hat die PEP-Definition im Handbuch und wie wurde sie angepasst?",
+    "ground_truth": "Die PEP-Definition wurde neu definiert und aktualisiert, um den Anforderungen des FM-GwG gerecht zu werden und die Sorgfaltspflichten bei politisch exponierten Personen zu konkretisieren.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q19",
+    "question": "Welche Sicherheitsanforderungen werden im Handbuch bezüglich Ausweisdokumenten genannt?",
+    "ground_truth": "Es sollen vermehrt Reisepässe vorgelegt werden, deren Sicherheitsmerkmale verstärkt geprüft werden; nurmehr österreichische Führerscheine und EWR-Personalausweise sind zulässig.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q20",
+    "question": "Was sind die Konsequenzen, wenn eine Verdachtsmeldung zu Unrecht erfolgt ist?",
+    "ground_truth": "Es können seitens des Kunden keine Schadenersatzansprüche für verspätete oder nicht durchgeführte Transaktionen geltend gemacht werden, wenn der Verdacht zu Unrecht angenommen wurde.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q21",
+    "question": "Wie wird im Handbuch der Begriff 'wirtschaftlicher Eigentümer' definiert und differenziert?",
+    "ground_truth": "Der Begriff wird neu definiert mit Unterscheidung zwischen wirtschaftlichem Eigentümer, oberstem Rechtsträger sowie direktem und indirektem wirtschaftlichem Eigentümer, ergänzt durch neue Beispiele und klare Feststellungen bei Stiftungen.",
+    "type": "verständnis",
+    "difficulty": "schwer",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q22",
+    "question": "Welche Anforderungen bestehen laut Handbuch bei der Eröffnung einer Zweigniederlassung in einem Drittland mit hohem Risiko?",
+    "ground_truth": "Für die Eröffnung ist eine vorherige Compliance-Genehmigung erforderlich, um die Risiken angemessen zu bewerten und zu steuern.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q23",
+    "question": "Wie wird im Handbuch der Umgang mit Bareinzahlungen von Tageslosungen geregelt?",
+    "ground_truth": "Es gibt Erleichterungen hinsichtlich der Mittelherkunftsdokumentation bei regelmäßigen Einzahlungen von Tageslosungen, die im Handbuch präzisiert sind.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q24",
+    "question": "Welche Bedeutung hat das Compliance Package, das im Handbuch erwähnt wird?",
+    "ground_truth": "Das Compliance Package ist ein neues Thema im Handbuch, das präzisiert, welche Verpflichtungen und Maßnahmen im Bereich Compliance zu erfüllen sind, insbesondere im Zusammenhang mit Aufbewahrungspflichten und Aktualisierungspflichten.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q25",
+    "question": "Was sind die wichtigsten Punkte zur internen Verdachtsmeldung im Zusammenhang mit Geldwäscherei laut Handbuch?",
+    "ground_truth": "Verdachtsmomente müssen unverzüglich dem Geldwäscherei-Beauftragten gemeldet werden, alle Schritte sind nachvollziehbar zu dokumentieren, und bei unklarer Sachlage sind weitere Informationen einzuholen, bevor über eine Meldung an Behörden entschieden wird.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q26",
+    "question": "Welche Rolle spielen die Compliance-Botschafterinnen und Botschafter laut Beilage 5?",
+    "ground_truth": "Compliance-Botschafterinnen und Botschafter unterstützen die Umsetzung der Compliance-Regelungen innerhalb der Organisation und dienen als Ansprechpartner für Mitarbeiter in Compliance-Fragen.",
+    "type": "verständnis",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q27",
+    "question": "Wie wird im Handbuch die Prüfung der Mittelherkunft bei Barüberträgen von Sparbüchern geregelt?",
+    "ground_truth": "Die Vorgehensweise bei Barüberträgen von Sparbüchern wurde präzisiert, insbesondere hinsichtlich der Mittelherkunftsdokumentation und der Verbuchung solcher Transaktionen.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q28",
+    "question": "Welche Bedeutung hat die FATF Risikoländerliste im Kontext des Handbuchs?",
+    "ground_truth": "Die FATF Risikoländerliste dient als Grundlage zur Identifikation von Drittländern mit hohem Risiko und ist in Beilage 4 enthalten, um verstärkte Sorgfaltspflichten bei Geschäften mit diesen Ländern anzuwenden.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q29",
+    "question": "Was sind die wichtigsten Änderungen in Version 3.6 vom 15.06.2022 bezüglich Ausweisdokumenten?",
+    "ground_truth": "Es wurde eine grundlegende Überarbeitung der Struktur vorgenommen, um Doppelgleisigkeiten zu reduzieren, und es gelten neue Sicherheitsanforderungen: nurmehr österreichische Führerscheine und EWR-Personalausweise sind zulässig, Reisepässe sollen vermehrt vorgelegt und deren Sicherheitsmerkmale verstärkt geprüft werden.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q30",
+    "question": "Wie wird im Handbuch die Eskalation bei Geldwäscheverdacht geregelt?",
+    "ground_truth": "Im Eskalationsfall entscheidet der Geldwäscherei-Beauftragte oder dessen Stellvertretung über die weiteren Maßnahmen, einschließlich Meldung an Behörden oder Sperre von Konten.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q31",
+    "question": "Welche Anforderungen stellt das Handbuch an die Qualität von Ausweiskopien?",
+    "ground_truth": "Es gibt Klarstellungen zur Qualität der Ausweiskopien, insbesondere bei Führerscheinen, die keine Staatsbürgerschaft ausweisen, um die Identitätsprüfung sicherzustellen.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q32",
+    "question": "Was regelt das Handbuch bezüglich der Online-Identifizierung im Ferngeschäft?",
+    "ground_truth": "Das Ferngeschäft ist nicht mehr unbedingt mit hohem Geldwäscherisiko verbunden, und es werden Sicherungsmaßnahmen wie die Möglichkeit der Online-Identifizierung dargestellt.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q33",
+    "question": "Wie wird im Handbuch die Verantwortung gemäß § 9 VStG beschrieben?",
+    "ground_truth": "Die Verantwortung nach § 9 VStG wird im Zusammenhang mit Risikoanalysen und Compliance-Verpflichtungen erläutert, wobei Mitarbeiter klare Pflichten tragen.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q34",
+    "question": "Welche Änderungen wurden in Version 2.3 vom 21.03.2012 vorgenommen?",
+    "ground_truth": "Erweiterung der KYC Kundenprotokoll Voraussetzungen, Klarstellungen zum Führerschein bezüglich Staatsbürgerschaft und Ausweiskopienqualität, Konkretisierung der Kontrollschritte und Aktualisierung der Legitimationsmatrix.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q35",
+    "question": "Was ist die Funktion der Legitimationsmatrix im Handbuch?",
+    "ground_truth": "Die Legitimationsmatrix dient zur systematischen Festlegung und Dokumentation der erforderlichen Legitimationsnachweise bei Kunden und Transaktionen.",
+    "type": "verständnis",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q36",
+    "question": "Welche Bedeutung hat die Meldepflicht bei der Eröffnung einer Tochtergesellschaft in einem Hochrisikoland?",
+    "ground_truth": "Die Meldepflicht stellt sicher, dass Compliance frühzeitig die Risiken bewertet und genehmigt, um Geldwäsche- und Terrorismusfinanzierungsrisiken bei Tochtergesellschaften in Hochrisikoländern zu minimieren.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q37",
+    "question": "Wie trägt die Aktualisierung der Sorgfaltspflichten gemäß FM-GwG zur Risikominderung bei?",
+    "ground_truth": "Durch die Aktualisierung der Sorgfaltspflichten werden Anforderungen präzisiert und erweitert, was eine bessere Identifikation und Kontrolle von Risiken bei Kundenbeziehungen ermöglicht und somit Geldwäsche und Terrorismusfinanzierung effektiver verhindert.",
+    "type": "analytisch",
+    "difficulty": "schwer",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q38",
+    "question": "Welche Auswirkungen hat die Streichung der bisherigen Vorgehensweise bei Kreditreviews auf die Aktualisierungspflichten?",
+    "ground_truth": "Die Streichung bedeutet, dass Aktualisierungen nicht mehr automatisch bei jedem Kreditreview erfolgen, sondern risikobasierte Intervalle gelten, was eine effizientere und zielgerichtete Überwachung ermöglicht.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q39",
+    "question": "Warum ist die Geheimhaltungspflicht gegenüber dem Kunden bei Verdachtsmeldungen wichtig?",
+    "ground_truth": "Die Geheimhaltungspflicht verhindert, dass der Kunde von den Ermittlungen erfährt und dadurch Beweismittel vernichtet oder Ermittlungen behindert werden, was die Effektivität der Geldwäschebekämpfung sichert.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q40",
+    "question": "Wie unterstützt die Compliance-Abteilung die Mitarbeiter im Umgang mit Geldwäscheprävention laut Handbuch?",
+    "ground_truth": "Die Compliance-Abteilung übernimmt die Kommunikation mit Behörden, führt Kontosperren durch, gibt Anweisungen zur Verdachtsmeldung und stellt Schulungen und Unterstützung für Mitarbeiter bereit.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q41",
+    "question": "Welche Kriterien können laut Handbuch einen Verdacht auf Geldwäsche begründen?",
+    "ground_truth": "Kriterien sind unter anderem die Person des Kunden, Art, Häufigkeit und Höhe der Transaktionen, ungewöhnliche Vorgänge oder Komplexität der Transaktionen sowie ungeklärter wirtschaftlicher Zweck.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q42",
+    "question": "Was sind die Folgen, wenn die Behörde eine Anordnung zur Unterlassung einer Transaktion erlässt?",
+    "ground_truth": "Die Transaktion darf nicht durchgeführt werden, die Behörde informiert unverzüglich Kunden und Staatsanwalt, und der Kunde kann ab diesem Zeitpunkt Rechtsmittel gegen die Sperre einlegen.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q43",
+    "question": "Wie wird im Handbuch die Dokumentation von Verdachtsmeldungen geregelt?",
+    "ground_truth": "Die Verdachtsmeldung muss eine Sachverhaltsdarstellung inklusive relevanter Unterlagen wie Korrespondenz und Kundenunterlagen enthalten und unverzüglich nach Erkennen erfolgen, vorzugsweise per E-Mail oder Telefon.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q44",
+    "question": "Welche Bedeutung hat die Legitimationsmatrix für die Kontrollschritte im Handbuch?",
+    "ground_truth": "Die Legitimationsmatrix definiert die erforderlichen Nachweise für unterschiedliche Kunden- und Transaktionsarten, was die Kontrollschritte systematisiert und die Einhaltung der Sorgfaltspflichten erleichtert.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q45",
+    "question": "Welche Rolle spielt die CRS-Kundenbewertung im Handbuch und wie hat sich ihre Verpflichtung geändert?",
+    "ground_truth": "Die CRS-Kundenbewertung wurde früher verpflichtend, ist aber in der aktuellen Version nicht mehr verpflichtend, was eine flexiblere Handhabung ermöglicht.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q46",
+    "question": "Wie wird im Handbuch die Prüfung der wirtschaftlichen Eigentümer bei börsennotierten Gesellschaften behandelt?",
+    "ground_truth": "Es gibt eine Änderung hinsichtlich der Feststellung und Überprüfung der wirtschaftlichen Eigentümer bei börsennotierten Gesellschaften, wobei spezifische Vorgaben und Ausnahmen gelten.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q47",
+    "question": "Welche Sanktionen und Ausnahmen werden im Handbuch im Zusammenhang mit Russland und der Ukraine behandelt?",
+    "ground_truth": "Die Finanzsanktionen wurden insbesondere gegen Russland und die Ukraine aktualisiert, und Ausnahmen der Sanktionen sind in einem separaten Dokument geregelt.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q48",
+    "question": "Wie wird im Handbuch der Umgang mit Gesellschaften in Gründung geregelt?",
+    "ground_truth": "Bei Gesellschaften in Gründung ist zwingend ein endgefertigter Notariatsakt erforderlich, um die Identität und Rechtsstellung zu dokumentieren.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q49",
+    "question": "Welche Bedeutung hat die Geldwäsche-Risikomatrix im Handbuch?",
+    "ground_truth": "Die Geldwäsche-Risikomatrix dient zur Einstufung von Kunden und Transaktionen nach ihrem Geldwäscherisiko und unterstützt die Anwendung der entsprechenden Sorgfaltspflichten.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  },
+  {
+    "id": "Q50",
+    "question": "Wie wird im Handbuch die Rolle der Filialleitung bei Verdachtsmeldungen beschrieben?",
+    "ground_truth": "Die Filialleitung wird per Mail über erfolgte Verdachtsmeldungen und die daraus resultierenden Folgen und Verpflichtungen informiert, um interne Transparenz und Koordination zu gewährleisten.",
+    "type": "verständnis",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf"
+  }
+]

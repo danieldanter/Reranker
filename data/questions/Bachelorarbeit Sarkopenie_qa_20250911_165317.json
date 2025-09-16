@@ -1,0 +1,191 @@
+[
+  {
+    "id": "Q1",
+    "question": "Wer hat den Begriff Sarkopenie geprägt und was bedeutet er etymologisch?",
+    "ground_truth": "Der Begriff Sarkopenie wurde 1989 von Irvin Rosenberg geprägt und bedeutet aus dem Griechischen so viel wie 'Mangel des Fleisches'.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q2",
+    "question": "Was versteht man unter Muskelhypertrophie und wie wird sie auf zellulärer Ebene erreicht?",
+    "ground_truth": "Muskelhypertrophie bezeichnet die Größen- bzw. Volumszunahme von Muskelzellen durch erhöhte Proteinsynthese, insbesondere der myofibrillären Proteine, was zu einer Zunahme der Myofibrillenzahl und des Querschnitts führt.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q3",
+    "question": "Warum ist die Muskelkraft im Alter stärker reduziert als die Muskelquerschnittsfläche?",
+    "ground_truth": "Die Muskelkraft nimmt im Alter stärker ab als die Muskelquerschnittsfläche, da neben dem Verlust von Muskelmasse auch die Muskelqualität durch Fettinfiltration und verminderte neuronale Aktivierung abnimmt.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q4",
+    "question": "Wie unterscheiden sich die Muskelfasertypen Typ I und Typ IID hinsichtlich ihrer Eigenschaften und Funktionen?",
+    "ground_truth": "Typ I Fasern sind langsamzuckend, ausdauernd, haben einen hohen Myoglobingehalt und viele Mitochondrien, eignen sich für langanhaltende Aktivitäten; Typ IID Fasern sind schnellzuckend, besitzen großen Durchmesser, hohe glykolytische Aktivität, wenige Mitochondrien und sind für Maximalkraft und Schnellkraft konzipiert.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q5",
+    "question": "Welche Rolle spielen Satellitenzellen bei der Muskelhypertrophie?",
+    "ground_truth": "Satellitenzellen sind myogene Vorläuferzellen, die bei mechanischem Stimulus aktiviert werden, proliferieren und mit Muskelfasern verschmelzen, um neue Zellkerne bereitzustellen, was die Proteinsynthese und somit Muskelwachstum unterstützt.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q6",
+    "question": "Welche drei primären Faktoren induzieren nach Schoenfeld (2010) Muskelhypertrophie?",
+    "ground_truth": "Muskelhypertrophie wird durch mechanische Spannung, Muskelschädigung und metabolischen Stress induziert.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q7",
+    "question": "Wie beeinflusst der Fiederungswinkel eines Muskels dessen Kraft und Verkürzungsvermögen?",
+    "ground_truth": "Ein größerer Fiederungswinkel ermöglicht mehr Muskelfasern in einem Muskel, was die Gesamtkraft erhöht, reduziert jedoch die Kraft der einzelnen Fasern in Zugrichtung und verringert das Verkürzungsvermögen und die Verkürzungsgeschwindigkeit des Muskels.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q8",
+    "question": "Warum ist der Begriff 'isotonisch' für Muskelkontraktionen nicht präzise und welche Begriffe werden als passender angesehen?",
+    "ground_truth": "Der Begriff 'isotonisch' suggeriert eine konstante Muskelspannung über die Bewegungsamplitude, was nicht zutrifft, da die Kraft variiert; passendere Begriffe sind 'auxotonisch', 'isoinertial' oder 'allodynamisch', die die variierende Spannung und Länge besser beschreiben.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q9",
+    "question": "Wie wirkt sich exzentrisches Training auf den metabolischen Energieverbrauch und die neuronale Aktivierung aus?",
+    "ground_truth": "Exzentrisches Training verursacht trotz höherer Kräfte einen geringeren metabolischen Energieverbrauch und eine geringere neuronale Aktivierung als konzentrisches oder isometrisches Training, was auf eine höhere Beanspruchung elastischer Komponenten und neuronale Hemmung zurückzuführen ist.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q10",
+    "question": "Welche bildgebenden Verfahren gelten als Goldstandard zur Bestimmung der Muskelmasse und welche Nachteile haben sie?",
+    "ground_truth": "Magnetic Resonance Imaging (MRI) und Computertomographie (CT) gelten als Goldstandard zur Bestimmung der Muskelmasse, unterscheiden Fett und Muskelgewebe zuverlässig, sind jedoch teuer, wenig verfügbar und CT bringt zudem radioaktive Strahlenbelastung mit sich.",
+    "type": "faktisch",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q11",
+    "question": "Inwiefern ist die Handgriffstärke ein geeigneter Indikator für die Muskelkraft bei älteren Menschen?",
+    "ground_truth": "Die Handgriffstärke korreliert stark mit der Kraft der unteren Extremitäten und der Fähigkeit, Aktivitäten des täglichen Lebens durchzuführen, ist einfach messbar und gilt als verlässlicher Ersatz für komplexere Muskelkraftmessungen bei älteren Menschen.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q12",
+    "question": "Warum ist die Definition und Diagnose von Sarkopenie trotz verschiedener Kriterien schwierig?",
+    "ground_truth": "Es gibt keine einheitliche klinische Definition, diagnostische Kriterien oder Behandlungsrichtlinien, da unterschiedliche Messmethoden, Referenzgruppen und Grenzwerte verwendet werden, was die Vergleichbarkeit und Standardisierung erschwert.",
+    "type": "analytisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q13",
+    "question": "Welche Mechanismen führen zur Denervations-Atrophie im alternden Muskel?",
+    "ground_truth": "Der Verlust von Motoneuronen führt zur Denervations-Atrophie, da Muskelfasern ohne neuronale Impulse schrumpfen, Zellkerne zentralisieren, Enzymaktivität abnimmt und irreversibel degenerieren oder nekrotisch werden können.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q14",
+    "question": "Wie verändert sich die Anzahl der motorischen Einheiten im Alter laut Studien an Menschen und Tieren?",
+    "ground_truth": "Die Anzahl motorischer Einheiten bleibt bis etwa zum 50. Lebensjahr relativ stabil und nimmt danach linear ab, wobei bei 90-Jährigen nur noch etwa 70% der Motoneurone im Vergleich zu 60-Jährigen vorhanden sind.",
+    "type": "faktisch",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q15",
+    "question": "Welche Veränderungen treten an der neuromuskulären Endplatte im Alter auf und wie beeinflussen sie die Muskelfunktion?",
+    "ground_truth": "Im Alter kommt es zu einer Reduktion der Nerven-Endigungsfläche und postsynaptischen Falten, Abnahme der synaptischen Vesikel und Neurotransmitter, sowie mitochondrialen Degenerationen, was die synaptische Übertragung und Muskelkontraktion beeinträchtigt.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q16",
+    "question": "Welche Rolle spielen Mitochondrien im alternden Muskel und welche Hypothesen erklären ihre Funktionsminderung?",
+    "ground_truth": "Mitochondrien sind für ATP-Produktion und Zellfunktion essentiell; ihre Funktionsminderung im Alter wird durch akkumulierte DNA-Schäden und ineffiziente Entfernung beschädigter Mitochondrien erklärt, was zu oxidativem Stress und Muskelabbau beiträgt.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q17",
+    "question": "Wie beeinflussen Entzündungsmediatoren wie IL-6 und TNF-α den altersbedingten Muskelschwund?",
+    "ground_truth": "IL-6 und TNF-α fördern Muskelabbau durch katabole Effekte und reduzieren die Proteinsynthese sowie Wachstumsfaktoren, wobei chronische Entzündungen mit verminderter Muskelkraft und Leistungsfähigkeit bei älteren Menschen korrelieren.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q18",
+    "question": "Welche Effekte hat Testosteron auf die Muskulatur und wie verändert sich sein Spiegel im Alter?",
+    "ground_truth": "Testosteron stimuliert Muskelwachstum durch Aktivierung der Proteinsynthese und Satellitenzellen, wirkt anabol, antikatabol und entzündungshemmend; sein Spiegel sinkt bei Männern ab dem 30. Lebensjahr jährlich um etwa 1%, was mit Muskelabbau und erhöhter Mortalität assoziiert ist.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q19",
+    "question": "Wie wirkt Myostatin auf die Muskelentwicklung und welche Bedeutung hat seine Hemmung im Kontext der Sarkopenie?",
+    "ground_truth": "Myostatin hemmt die Myogenese durch Reduktion myogener Faktoren wie MyoD; seine Hemmung führt zu Muskelhypertrophie und Hyperplasie, was in Tiermodellen den altersbedingten Muskelschwund reduziert, jedoch ist die Rolle von Myostatin bei Sarkopenie beim Menschen noch nicht abschließend geklärt.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q20",
+    "question": "Welche Bedeutung hat die Proteinzufuhr bei älteren Menschen für den Erhalt der Muskelmasse?",
+    "ground_truth": "Proteine liefern Aminosäuren für Muskelproteinsynthese und stimulieren diese; ältere Menschen zeigen eine gedämpfte anabole Reaktion bei geringer Proteinzufuhr, weshalb eine erhöhte tägliche Proteinzufuhr von etwa 1-1,3 g/kg empfohlen wird, um Muskelabbau zu reduzieren.",
+    "type": "verständnis",
+    "difficulty": "mittel",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  },
+  {
+    "id": "Q21",
+    "question": "Welche Vorteile bietet Krafttraining für ältere Menschen im Kampf gegen Sarkopenie?",
+    "ground_truth": "Krafttraining steigert Muskelmasse und -kraft durch Hypertrophie und verbesserte neuronale Aktivierung, erhöht Knochendichte, Balance, Ganggeschwindigkeit und reduziert Diabetesrisiko; es ist die effektivste Methode zur Prävention und Behandlung von Sarkopenie mit kaum Nebenwirkungen.",
+    "type": "verständnis",
+    "difficulty": "leicht",
+    "status": "pending",
+    "source": "auto-generated from Bachelorarbeit Sarkopenie.pdf"
+  }
+]
