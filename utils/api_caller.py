@@ -182,3 +182,77 @@ class VectorServiceCaller:
                 'error': reranked_response.get('error') if isinstance(reranked_response, dict) else None
             }
         }
+    
+
+    # Add this method to your existing VectorServiceCaller class in utils/api_caller.py
+
+    def fetch_both_systems_separate(self, query: str, 
+                                original_config: Dict = None,
+                                reranked_config: Dict = None, 
+                                top_k: int = 10) -> Dict:
+        """
+        Fetch from both systems with separate configurations
+        
+        Args:
+            query: The search query
+            original_config: Dict with 'folder_ids' and 'unique_titles' for original system
+            reranked_config: Dict with 'folder_ids' and 'unique_titles' for reranked system
+            top_k: Number of results to retrieve
+        
+        Returns:
+            Dict with results from both systems
+        """
+        
+        # Set defaults if not provided
+        original_config = original_config or {'folder_ids': [], 'unique_titles': []}
+        reranked_config = reranked_config or {'folder_ids': [], 'unique_titles': []}
+        
+        # Fetch from original system with its own configuration
+        original_response, original_time = self.fetch_chunks(
+            query=query,
+            folder_ids=original_config.get('folder_ids', []),
+            unique_titles=original_config.get('unique_titles', []),
+            top_k=top_k,
+            use_reranker=False
+        )
+        
+        # Fetch from reranked system with its own configuration
+        reranked_response, reranked_time = self.fetch_chunks(
+            query=query,
+            folder_ids=reranked_config.get('folder_ids', []),
+            unique_titles=reranked_config.get('unique_titles', []),
+            top_k=top_k,
+            use_reranker=True
+        )
+        
+        # Debug output
+        print(f"Original config: folder_ids={original_config.get('folder_ids')}, titles={original_config.get('unique_titles')}")
+        print(f"Reranked config: folder_ids={reranked_config.get('folder_ids')}, titles={reranked_config.get('unique_titles')}")
+        
+        # Extract chunks
+        original_chunks = []
+        reranked_chunks = []
+        
+        if isinstance(original_response, dict):
+            original_chunks = original_response.get('Documents', original_response.get('chunks', []))
+        
+        if isinstance(reranked_response, dict):
+            reranked_chunks = reranked_response.get('Documents', reranked_response.get('chunks', []))
+        
+        print(f"Original chunks count: {len(original_chunks)}")
+        print(f"Reranked chunks count: {len(reranked_chunks)}")
+        
+        return {
+            'original': {
+                'chunks': original_chunks,
+                'time_ms': original_time,
+                'error': original_response.get('error') if isinstance(original_response, dict) else None,
+                'config': original_config  # Include config in response for reference
+            },
+            'reranked': {
+                'chunks': reranked_chunks,
+                'time_ms': reranked_time,
+                'error': reranked_response.get('error') if isinstance(reranked_response, dict) else None,
+                'config': reranked_config  # Include config in response for reference
+            }
+    }

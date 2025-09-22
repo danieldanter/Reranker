@@ -125,6 +125,135 @@ class BatchEvaluator:
         
         return evaluation
     
+    # Add these methods to your existing BatchEvaluator class in utils/batch_evaluator.py
+
+def evaluate_single_question_separate(self, question_data: Dict, 
+                                     original_config: Dict,
+                                     reranked_config: Dict) -> Dict:
+    """
+    Evaluate a single question through both systems with separate configurations
+    
+    Args:
+        question_data: Dict with question info
+        original_config: Dict with 'folder_ids' and 'unique_titles' for original system
+        reranked_config: Dict with 'folder_ids' and 'unique_titles' for reranked system
+    """
+    
+    question = question_data['question']
+    ground_truth = question_data['ground_truth']
+    
+    # Fetch chunks from both systems with separate configurations
+    results = self.api_caller.fetch_both_systems_separate(
+        query=question,
+        original_config=original_config,
+        reranked_config=reranked_config,
+        top_k=10
+    )
+    
+    evaluation = {
+        'question_id': question_data['id'],
+        'question': question,
+        'ground_truth': ground_truth,
+        'original_config': original_config,  # Store config for reference
+        'reranked_config': reranked_config
+    }
+    
+    # Process each system
+    for system in ['original', 'reranked']:
+        try:
+            if results[system].get('error'):
+                print(f"Error in {system} system: {results[system]['error']}")
+                continue
+                
+            chunks = results[system].get('chunks', [])
+            
+            if not isinstance(chunks, list):
+                print(f"Warning: chunks for {system} is not a list, got {type(chunks)}")
+                continue
+                
+            if not chunks:
+                print(f"No chunks returned for {system} system")
+                continue
+            
+            contexts = [chunk.get('content', '') for chunk in chunks if isinstance(chunk, dict)]
+            
+            if not contexts:
+                print(f"No valid contexts extracted from chunks for {system}")
+                continue
+            
+            # Generate answer
+            answer = self.answer_gen.generate_answer(question, chunks)
+            
+            # Calculate metrics
+            metrics = {
+                'faithfulness': self.metrics_calc.calculate_faithfulness(answer, contexts),
+                'answer_relevancy': self.metrics_calc.calculate_answer_relevancy(question, answer),
+                'context_precision': self.metrics_calc.calculate_context_precision(question, contexts),
+                'context_recall': self.metrics_calc.calculate_context_recall(ground_truth, contexts),
+                'answer_correctness': self.metrics_calc.calculate_answer_correctness(answer, ground_truth),
+                'response_time_ms': results[system].get('time_ms', 0),
+                'answer': answer,
+                'refused_to_answer': self.is_refusal_answer(answer),
+                'source_config': results[system].get('config', {})  # Include source config
+            }
+            
+            evaluation[f'{system}_metrics'] = metrics
+            
+        except Exception as e:
+            print(f"Error processing {system} system: {e}")
+            import traceback
+            traceback.print_exc()
+            continue
+    
+    return evaluation
+
+def batch_evaluate_separate(self, questions: List[Dict], 
+                           original_config: Dict,
+                           reranked_config: Dict) -> tuple:
+    """
+    Evaluate multiple questions with separate configurations for each system
+    
+    Args:
+        questions: List of question dictionaries
+        original_config: Configuration for original system
+        reranked_config: Configuration for reranked system
+    
+    Returns:
+        Tuple of (DataFrame with results, raw results list)
+    """
+    
+    all_results = []
+    
+    print(f"\nStarting batch evaluation with separate configurations:")
+    print(f"Original config: {original_config}")
+    print(f"Reranked config: {reranked_config}")
+    print(f"Evaluating {len(questions)} questions...\n")
+    
+    for i, question_data in enumerate(questions, 1):
+        print(f"Evaluating question {i}/{len(questions)}: {question_data['id']}")
+        
+        try:
+            result = self.evaluate_single_question_separate(
+                question_data, 
+                original_config,
+                reranked_config
+            )
+            all_results.append(result)
+        except Exception as e:
+            print(f"Error evaluating {question_data['id']}: {e}")
+            continue
+    
+    # Create results dataframe
+    df = self._create_results_dataframe(all_results)
+    
+    # Add configuration info to the results
+    if df is not None and not df.empty:
+        # You could add config columns to track which sources were used
+        df['original_source'] = str(original_config)
+        df['reranked_source'] = str(reranked_config)
+    
+    return df, all_results
+    
     def batch_evaluate(self, questions: List[Dict], folder_ids: List[str], unique_titles: List[str]) -> pd.DataFrame:
         """Evaluate multiple questions and return aggregated results"""
         

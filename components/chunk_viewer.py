@@ -148,7 +148,7 @@ def render_chunk_viewer(chunks: List[Dict], system_name: str, movements: Dict = 
                         st.info(f"Was at position #{chunk['original_position']} before reranking (of 30 candidates)")
                     
                     st.markdown("**Content preview:**")
-                    st.text(chunk.get('content', 'No content')[:500])
+                    st.text(chunk.get('content', 'No content')[:4000])
             
             with col3:
                 # Different display logic for original vs reranked

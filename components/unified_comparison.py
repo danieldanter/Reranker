@@ -13,6 +13,7 @@ from utils.answer_generator import AnswerGenerator
 from utils.api_caller import VectorServiceCaller
 from utils.batch_evaluator import BatchEvaluator
 
+
 def render_unified_comparison():
     """Main unified comparison interface"""
     
@@ -31,7 +32,9 @@ def render_unified_comparison():
 
     # ── Session management section (top-level expander) ──────────────────────────
     with st.expander("📁 Session Management", expanded=False):
-        tab1, tab2, tab3, tab4, tab5 = st.tabs(["Load Questions", "Generate from PDF", "Manual Entry", "Tab4", "RAGAS Evaluation"])
+        tab1, tab2, tab3, tab4, tab5 = st.tabs(
+            ["Load Questions", "Generate from PDF", "Manual Entry", "Tab4", "RAGAS Evaluation"]
+        )
         
         # --- Tab 1: Load Questions ---
         with tab1:
@@ -51,7 +54,6 @@ def render_unified_comparison():
                     st.session_state.current_question_idx = 0
                     st.success("Loaded sample questions")
         
-        # --- Tab 2: Generate from PDF ---
         # --- Tab 2: Generate from PDF ---
         with tab2:
             st.markdown("### 🤖 Generate Q&A from PDF")
@@ -79,7 +81,7 @@ def render_unified_comparison():
                 if len(questions_to_use) > preview_count:
                     st.info(f"... and {len(questions_to_use) - preview_count} more questions")
 
-                # Action buttons (always read from session state)
+                # Action buttons
                 col_add, col_replace, col_save_use = st.columns(3)
 
                 with col_add:
@@ -96,7 +98,6 @@ def render_unified_comparison():
                         st.rerun()
 
                 with col_save_use:
-                    # Persist the save name in session so it survives across reruns
                     current_default = (
                         st.session_state.get("generated_questions_name")
                         or default_save
@@ -113,19 +114,12 @@ def render_unified_comparison():
                         questions_to_save = st.session_state.get("last_generated_questions", [])
                         save_name = st.session_state.get("generated_questions_name", "backup")
 
-                        print("DEBUG(UI): Save & Use clicked.")
-                        print(f"DEBUG(UI): About to save {len(questions_to_save)} questions as '{save_name}'")
-
                         if questions_to_save:
-                            # Persist to disk
                             session_mgr.save_questions(questions_to_save, save_name)
-                            # Load into active session
                             st.session_state.test_questions = questions_to_save
                             st.session_state.current_question_idx = 0
-                            # Refresh saved sets (if displayed elsewhere)
                             if hasattr(session_mgr, "list_question_sets"):
                                 st.session_state.saved_question_sets = session_mgr.list_question_sets()
-                            # Clear transient generated cache if you want to avoid accidental re-saves
                             del st.session_state["last_generated_questions"]
                             st.success(f"✅ Saved and loaded {len(questions_to_save)} questions as '{save_name}'")
                             st.rerun()
@@ -133,8 +127,7 @@ def render_unified_comparison():
                             st.error("No questions to save!")
 
             if uploaded_file:
-                # Get file info
-                file_size = len(uploaded_file.getvalue()) / (1024 * 1024)  # Size in MB
+                file_size = len(uploaded_file.getvalue()) / (1024 * 1024)
                 st.info(f"📄 File: {uploaded_file.name} ({file_size:.1f} MB)")
                 
                 col1, col2, col3 = st.columns(3)
@@ -157,7 +150,6 @@ def render_unified_comparison():
                         help="Type of questions to generate"
                     )
 
-                # Advanced options
                 show_advanced = st.checkbox("Show Advanced Options")
                 include_page_refs = True
                 avoid_duplicates = True
@@ -180,7 +172,6 @@ def render_unified_comparison():
                     status_text = st.empty()
                     
                     with st.spinner(f"Extracting text from {uploaded_file.name}..."):
-                        # Step 1: Extract text
                         status_text.text("Step 1/3: Extracting PDF text...")
                         progress_bar.progress(0.2)
                         full_text = session_mgr.pdf_processor.extract_full_text(uploaded_file)
@@ -191,10 +182,8 @@ def render_unified_comparison():
                             text_length = len(full_text)
                             st.success(f"✅ Extracted {text_length:,} characters from PDF")
                             
-                            # Step 2: Generate questions
                             status_text.text(f"Step 2/3: Generating {num_questions} questions...")
                             progress_bar.progress(0.5)
-                            # If you later support the UI options, pass them here as kwargs
                             new_questions = session_mgr.llm_client.generate_questions_simple(
                                 full_text, num_questions
                             )
@@ -205,7 +194,6 @@ def render_unified_comparison():
                                 status_text.text("Step 3/3: Formatting results...")
                                 progress_bar.progress(1.0)
                                 
-                                # Format questions
                                 formatted_questions = []
                                 for i, qa in enumerate(new_questions, 1):
                                     formatted_questions.append({
@@ -218,19 +206,16 @@ def render_unified_comparison():
                                         "source": f"auto-generated from {uploaded_file.name}"
                                     })
 
-                                # Compute a default save name immediately (timestamped)
                                 default_save = (
                                     f"{uploaded_file.name.replace('.pdf', '')}"
                                     f"_qa_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
                                 )
                                 
-                                # CRITICAL: store in session state so it survives reruns & button clicks
                                 st.session_state.last_generated_questions = formatted_questions
-                                st.session_state.generated_questions = formatted_questions  # (if used elsewhere)
+                                st.session_state.generated_questions = formatted_questions
                                 st.session_state.last_save_name = default_save
                                 st.session_state.generated_questions_name = default_save
 
-                                # Save debug info about save path
                                 questions_dir = getattr(session_mgr, "questions_dir", None)
                                 save_debug = {
                                     "questions_dir": str(questions_dir.absolute()) if questions_dir else "(unknown)",
@@ -242,18 +227,9 @@ def render_unified_comparison():
                                     "count": len(formatted_questions),
                                 }
                                 st.session_state.save_debug = save_debug
-                                
-                                # Terminal debug prints
-                                print(f"DEBUG(UI): Prepared {len(formatted_questions)} questions")
-                                if questions_dir:
-                                    print(f"DEBUG(UI): questions_dir={questions_dir.absolute()}")
-                                print(f"DEBUG(UI): default_save={default_save}")
-                                if questions_dir:
-                                    print(f"DEBUG(UI): expected_path={(questions_dir / f'{default_save}.json').absolute()}")
 
                                 st.success(f"✅ Generated {len(formatted_questions)} unique questions!")
 
-                                # Metrics
                                 s_col1, s_col2, s_col3 = st.columns(3)
                                 with s_col1:
                                     st.metric("Questions Generated", len(formatted_questions))
@@ -264,7 +240,6 @@ def render_unified_comparison():
                                     avg_len = sum(len(q['question']) for q in formatted_questions) / len(formatted_questions)
                                     st.metric("Avg Question Length", f"{avg_len:.0f} chars")
 
-                                # Render preview + actions from session state
                                 render_preview_and_actions()
                             else:
                                 st.error("Failed to generate questions")
@@ -272,39 +247,40 @@ def render_unified_comparison():
                     progress_bar.empty()
                     status_text.empty()
 
-                # If we already have generated questions from a previous run, show them + actions
                 if st.session_state.get("last_generated_questions"):
                     st.markdown("---")
                     render_preview_and_actions()
                 else:
-                    # Optional gentle hint
                     st.caption("Generate questions to preview and save them here.")
-
 
         # --- Tab 3: Manual Entry ---
         with tab3:
             if st.button("Add New Question"):
                 st.session_state.show_add_question = True
 
-        # Add new tab for batch evaluation
-        # Update the batch evaluation section in unified_comparison.py
-        with tab5:  # Add as new tab
+        # --- Tab 5: RAGAS Evaluation ---
+        with tab5:
             st.markdown("### 🚀 RAGAS Batch Evaluation")
             
             if st.session_state.get("test_questions"):
                 st.info(f"Ready to evaluate {len(st.session_state.test_questions)} questions")
                 
-                # Pull current search configuration from the existing input fields (set earlier in the app)
-                current_folder_id = st.session_state.get('folder_id_input', 'dd29b9bd-31aa-4db1-8208-767f52332735')
-                current_unique_title = st.session_state.get('unique_title_input', '')
+                # Get configurations from the separated inputs
+                original_folder_id = st.session_state.get('original_folder_id', '')
+                original_unique_title = st.session_state.get('original_unique_title', '')
+                reranked_folder_id = st.session_state.get('reranked_folder_id', '')
+                reranked_unique_title = st.session_state.get('reranked_unique_title', '')
 
-                # Show current configuration
                 st.markdown("#### Current Search Configuration:")
                 col_cfg_1, col_cfg_2 = st.columns(2)
                 with col_cfg_1:
-                    st.text(f"Folder ID: {current_folder_id if current_folder_id else 'Not set'}")
+                    st.markdown("**Original System:**")
+                    st.text(f"Folder: {original_folder_id if original_folder_id else 'Not set'}")
+                    st.text(f"Document: {original_unique_title if original_unique_title else 'All in folder'}")
                 with col_cfg_2:
-                    st.text(f"Document: {current_unique_title if current_unique_title else 'All documents in folder'}")
+                    st.markdown("**Reranked System:**")
+                    st.text(f"Folder: {reranked_folder_id if reranked_folder_id else 'Not set'}")
+                    st.text(f"Document: {reranked_unique_title if reranked_unique_title else 'All in folder'}")
 
                 col1, col2 = st.columns(2)
                 with col1:
@@ -317,31 +293,36 @@ def render_unified_comparison():
 
                 with col2:
                     if st.button("🎯 Run RAGAS Evaluation", type="primary"):
-                        # Validate configuration
-                        if not current_folder_id:
-                            st.error("Please set a Folder ID in the Search Configuration section")
+                        if not (original_folder_id or original_unique_title):
+                            st.error("Please set Original System configuration")
+                        elif not (reranked_folder_id or reranked_unique_title):
+                            st.error("Please set Reranked System configuration")
                         else:
                             evaluator = BatchEvaluator()
                             with st.spinner(f"Evaluating {num_to_evaluate} questions... This may take a few minutes."):
                                 questions_subset = st.session_state.test_questions[:num_to_evaluate]
 
-                                # Use values from the input fields
-                                df, raw_results = evaluator.batch_evaluate(
+                                # Pass separate configurations for evaluation
+                                df, raw_results = evaluator.batch_evaluate_separate(
                                     questions_subset,
-                                    folder_ids=[current_folder_id] if current_folder_id else [],
-                                    unique_titles=[current_unique_title] if current_unique_title else []
+                                    original_config={
+                                        'folder_ids': [original_folder_id] if original_folder_id else [],
+                                        'unique_titles': [original_unique_title] if original_unique_title else []
+                                    },
+                                    reranked_config={
+                                        'folder_ids': [reranked_folder_id] if reranked_folder_id else [],
+                                        'unique_titles': [reranked_unique_title] if reranked_unique_title else []
+                                    }
                                 )
 
                                 report = evaluator.generate_report(df)
-
-                                # Store results
                                 st.session_state.ragas_results = {
                                     'df': df,
                                     'raw_results': raw_results,
                                     'report': report
                                 }
 
-                # Display results if available
+                # Display results if available (full section)
                 if 'ragas_results' in st.session_state:
                     report = st.session_state.ragas_results['report']
                     df = st.session_state.ragas_results['df']
@@ -418,23 +399,23 @@ def render_unified_comparison():
                     # Miss Statistics
                     if 'miss_statistics' in report:
                         st.markdown("### 🎯 Answer Coverage Analysis")
-                        col1, col2, col3 = st.columns(3)
+                        col1_m, col2_m, col3_m = st.columns(3)
                         
-                        with col1:
+                        with col1_m:
                             st.metric(
                                 "Original System Misses",
                                 f"{report['miss_statistics']['original_misses']}/{report['total_questions']}",
                                 f"{report['miss_statistics']['original_miss_rate']:.1f}% miss rate"
                             )
                         
-                        with col2:
+                        with col2_m:
                             st.metric(
                                 "Reranked System Misses",
                                 f"{report['miss_statistics']['reranked_misses']}/{report['total_questions']}",
                                 f"{report['miss_statistics']['reranked_miss_rate']:.1f}% miss rate"
                             )
                         
-                        with col3:
+                        with col3_m:
                             reduction = report['miss_statistics']['miss_reduction']
                             if reduction > 0:
                                 st.metric("Miss Reduction", f"-{reduction}", "Improvement", delta_color="normal")
@@ -443,23 +424,25 @@ def render_unified_comparison():
 
                     # Advanced vs Standard Correctness Comparison
                     st.markdown("### 📊 Answer Correctness Analysis")
-                    col1, col2 = st.columns(2)
+                    col1_c, col2_c = st.columns(2)
 
-                    with col1:
+                    with col1_c:
                         st.markdown("**Standard Correctness** (Exact Match)")
                         standard_orig = report['original_metrics'].get('answer_correctness_standard', 0)
                         standard_rerank = report['reranked_metrics'].get('answer_correctness_standard', 0)
                         st.metric("Original", f"{standard_orig:.3f}")
-                        st.metric("Reranked", f"{standard_rerank:.3f}", f"{((standard_rerank - standard_orig) / standard_orig * 100):.1f}%")
+                        delta_std = ( (standard_rerank - standard_orig) / standard_orig * 100 ) if standard_orig else 0.0
+                        st.metric("Reranked", f"{standard_rerank:.3f}", f"{delta_std:.1f}%")
 
-                    with col2:
+                    with col2_c:
                         st.markdown("**Advanced Correctness** (Semantic Match)")
                         advanced_orig = report['original_metrics'].get('answer_correctness_advanced', 0)
                         advanced_rerank = report['reranked_metrics'].get('answer_correctness_advanced', 0)
                         st.metric("Original", f"{advanced_orig:.3f}")
-                        st.metric("Reranked", f"{advanced_rerank:.3f}", f"{((advanced_rerank - advanced_orig) / advanced_orig * 100):.1f}%")
+                        delta_adv = ( (advanced_rerank - advanced_orig) / advanced_orig * 100 ) if advanced_orig else 0.0
+                        st.metric("Reranked", f"{advanced_rerank:.3f}", f"{delta_adv:.1f}%")
 
-                     # NEW: Question-by-Question Results
+                    # NEW: Question-by-Question Results
                     st.markdown("### 📋 Question-Level Results")
                     
                     raw_results = st.session_state.ragas_results.get('raw_results', [])
@@ -512,7 +495,7 @@ def render_unified_comparison():
 
                     # Export options
                     st.markdown("### Export Results")
-                    exp_col1, exp_col2, exp_col3 = st.columns(3)
+                    exp_col1, exp_col2 = st.columns(2)
 
                     with exp_col1:
                         csv = df.to_csv(index=False)
@@ -534,9 +517,6 @@ def render_unified_comparison():
             else:
                 st.warning("Please load questions first")
 
-    
-
-
     # ── Add new question dialog ────────────────────────────────────────────────
     if st.session_state.get('show_add_question', False):
         with st.form("add_question_form"):
@@ -555,31 +535,64 @@ def render_unified_comparison():
                 st.session_state.test_questions.append(new_q)
                 st.session_state.show_add_question = False
                 st.rerun()
-    # ── Search Configuration Section (before Question Navigator) ──
+
+    # ── NEW: Separated Search Configuration Section ──
     st.markdown("### 🔧 Search Configuration")
-    col1, col2 = st.columns(2)
-
-    with col1:
-        folder_id_input = st.text_input(
+    
+    # Create two columns for separate configurations
+    col_original, col_reranked = st.columns(2)
+    
+    with col_original:
+        st.markdown("#### 🔵 Original System")
+        original_folder_id = st.text_input(
             "Folder ID(s) - comma separated",
-            value="dd29b9bd-31aa-4db1-8208-767f52332735",
-            help="Enter one or more folder IDs, separated by commas",
-            key="folder_ids_config"
+            value=st.session_state.get('original_folder_id', 'dd29b9bd-31aa-4db1-8208-767f52332735'),
+            help="Enter folder IDs for original system",
+            key="original_folder_input"
         )
+        st.session_state.original_folder_id = original_folder_id
         
-    with col2:
-        unique_title_input = st.text_input(
+        original_unique_title = st.text_input(
             "Document(s) - comma separated",
-            value="dd29b9bd-31aa-4db1-8208-767f52332735_Bachelorarbeit Sarkopenie.pdf",
-            help="Enter specific document IDs, or leave empty to search entire folder",
-            key="unique_titles_config"
+            value=st.session_state.get('original_unique_title', 'dd29b9bd-31aa-4db1-8208-767f52332735_Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf'),
+            help="Enter document IDs for original system",
+            key="original_title_input"
         )
+        st.session_state.original_unique_title = original_unique_title
+        
+    with col_reranked:
+        st.markdown("#### 🟢 Reranked System")
+        reranked_folder_id = st.text_input(
+            "Folder ID(s) - comma separated",
+            value=st.session_state.get('reranked_folder_id', 'dd29b9bd-31aa-4db1-8208-767f52332735'),
+            help="Enter folder IDs for reranked system",
+            key="reranked_folder_input"
+        )
+        st.session_state.reranked_folder_id = reranked_folder_id
+        
+        reranked_unique_title = st.text_input(
+            "Document(s) - comma separated",
+            value=st.session_state.get('reranked_unique_title', 'dd29b9bd-31aa-4db1-8208-767f52332735_Geldwäsche-Handbuch 3.7_2023 09 18_FINAL.pdf'),
+            help="Enter document IDs for reranked system",
+            key="reranked_title_input"
+        )
+        st.session_state.reranked_unique_title = reranked_unique_title
 
-    # Parse the inputs
-    folder_ids = [f.strip() for f in folder_id_input.split(',') if f.strip()] if folder_id_input else []
-    unique_titles = [u.strip() for u in unique_title_input.split(',') if u.strip()] if unique_title_input else []
+    # Parse the inputs for both systems
+    original_folder_ids = [f.strip() for f in original_folder_id.split(',') if f.strip()] if original_folder_id else []
+    original_unique_titles = [u.strip() for u in original_unique_title.split(',') if u.strip()] if original_unique_title else []
+    
+    reranked_folder_ids = [f.strip() for f in reranked_folder_id.split(',') if f.strip()] if reranked_folder_id else []
+    reranked_unique_titles = [u.strip() for u in reranked_unique_title.split(',') if u.strip()] if reranked_unique_title else []
+
+    # Optional: Add a sync button to use same config for both
+    if st.button("🔄 Use same configuration for both systems", use_container_width=True):
+        st.session_state.reranked_folder_id = st.session_state.original_folder_id
+        st.session_state.reranked_unique_title = st.session_state.original_unique_title
+        st.rerun()
 
     st.markdown("---")
+    
     # ── Question Navigator ────────────────────────────────────────────────────
     st.markdown("### Question Navigator")
     new_idx = render_question_navigator(
@@ -609,62 +622,66 @@ def render_unified_comparison():
             st.button("➡️ Next")
         
         if run_current:
-            # Use the configured values from above
-            if not folder_ids and not unique_titles:
-                st.error("Please provide either a Folder ID or Document ID")
+            # Validate configurations
+            if not (original_folder_ids or original_unique_titles):
+                st.error("Please provide Original System configuration (Folder ID or Document ID)")
+            elif not (reranked_folder_ids or reranked_unique_titles):
+                st.error("Please provide Reranked System configuration (Folder ID or Document ID)")
             else:
-                with st.spinner("Fetching results..."):
-                    results = api_caller.fetch_both_systems(
+                with st.spinner("Fetching results from both systems..."):
+                    # Fetch with separate configurations
+                    results = api_caller.fetch_both_systems_separate(
                         query=current_q['question'],
-                        folder_ids=folder_ids,
-                        unique_titles=unique_titles,
+                        original_config={
+                            'folder_ids': original_folder_ids,
+                            'unique_titles': original_unique_titles
+                        },
+                        reranked_config={
+                            'folder_ids': reranked_folder_ids,
+                            'unique_titles': reranked_unique_titles
+                        },
                         top_k=10
                     )
                     cache_key = f"{current_q['id']}_results"
                     st.session_state.results_cache[cache_key] = results
             current_q['status'] = 'completed'
+        
         # Initialize answer generator
         answer_gen = AnswerGenerator()
-        # Add this where results are displayed
+        
+        # Display results if cached
         cache_key = f"{current_q['id']}_results"
         if cache_key in st.session_state.results_cache:
             results = st.session_state.results_cache[cache_key]
             
-            # Initialize selected chunk state
             if 'selected_chunk' not in st.session_state:
                 st.session_state.selected_chunk = None
             
-            # Calculate movements
             original_chunks = results["original"]["chunks"]
             reranked_chunks = results["reranked"]["chunks"]
             movements, stats = calculate_chunk_movements(original_chunks, reranked_chunks)
 
-            # NEW: Generate and Compare Answers
+            # AI Answer Comparison section
             st.markdown("### 🤖 AI Answer Comparison")
             st.markdown("Comparing answers generated from original vs reranked chunks:")
             
-            # Generate answers button
             if st.button("🔮 Generate Answers from Both Chunk Sets", type="primary"):
                 with st.spinner("Generating answers..."):
-                    # Generate answer from original chunks
                     original_answer = answer_gen.generate_answer(
                         current_q['question'], 
-                        original_chunks[:10]  # Use top 10
+                        original_chunks[:10]
                     )
                     
-                    # Generate answer from reranked chunks
                     reranked_answer = answer_gen.generate_answer(
                         current_q['question'],
-                        reranked_chunks[:10]  # Use top 10
+                        reranked_chunks[:10]
                     )
                     
-                    # Store in session state
                     st.session_state[f"{cache_key}_answers"] = {
                         'original': original_answer,
                         'reranked': reranked_answer
                     }
             
-            # Display answers if they exist
             answers_key = f"{cache_key}_answers"
             if answers_key in st.session_state:
                 answers = st.session_state[answers_key]
@@ -681,7 +698,6 @@ def render_unified_comparison():
                     with st.container():
                         st.markdown(answers['reranked'])
                 
-                # Quality comparison section
                 with st.expander("📊 Answer Quality Analysis"):
                     st.markdown("""
                     **Compare the answers on:**
@@ -691,38 +707,33 @@ def render_unified_comparison():
                     - ✅ Relevance - Which answer better addresses the question?
                     """)
                     
-                    # Show ground truth for comparison
                     st.info(f"**Ground Truth:** {current_q['ground_truth']}")
             
             st.markdown("---")
-
-
             
             # Display statistics summary box
             st.markdown("### 📊 Reranking Impact Analysis")
             
-            # Main stats
-            col1, col2, col3, col4 = st.columns(4)
+            col_i1, col_i2, col_i3, col_i4 = st.columns(4)
             
-            with col1:
+            with col_i1:
                 st.metric("Kept in Top 10", f"{stats['matching']}/10",
-                        help="Chunks that stayed in top 10")
+                          help="Chunks that stayed in top 10")
             
-            with col2:
+            with col_i2:
                 st.metric("Pulled from Deep", stats['new_in_top10'],
-                        help="New chunks from positions >10")
+                          help="New chunks from positions >10")
             
-            with col3:
+            with col_i3:
                 st.metric("Dropped Out", stats['dropped_from_top10'],
-                        help="Original top 10 chunks that got pushed out")
+                          help="Original top 10 chunks that got pushed out")
             
-            with col4:
+            with col_i4:
                 if stats['from_outside_top10']:
                     best_find = max(stats['from_outside_top10'], key=lambda x: x['jump'])
                     st.metric("Best Find", f"#{best_find['from']} → #{best_find['to']}",
-                            help=f"Biggest jump: moved up {best_find['jump']} positions!")
+                              help=f"Biggest jump: moved up {best_find['jump']} positions!")
             
-            # Show notable movements
             if stats['from_outside_top10']:
                 with st.expander("🚀 Chunks Retrieved from Deep Positions"):
                     for item in sorted(stats['from_outside_top10'], key=lambda x: x['jump'], reverse=True):
@@ -730,22 +741,26 @@ def render_unified_comparison():
             
             # Display the chunks with movements
             st.markdown("---")
-            col_original, col_reranked = st.columns(2)
+            col_original_view, col_reranked_view = st.columns(2)
             
-            with col_original:
+            with col_original_view:
                 st.markdown("#### 🔵 ORIGINAL SYSTEM")
+                st.caption(f"Source: {original_folder_ids[0] if original_folder_ids else 'No folder'}")
                 if results["original"]["error"]:
                     st.error(f"Error: {results['original']['error']}")
                 else:
                     st.metric("Response Time", f"{results['original']['time_ms']:.0f}ms")
-                    render_chunk_viewer(original_chunks, "original", movements, 
-                                    st.session_state.get('selected_chunk'))
+                    render_chunk_viewer(
+                        original_chunks, "original", movements, st.session_state.get('selected_chunk')
+                    )
             
-            with col_reranked:
+            with col_reranked_view:
                 st.markdown("#### 🟢 RERANKED SYSTEM")
+                st.caption(f"Source: {reranked_folder_ids[0] if reranked_folder_ids else 'No folder'}")
                 if results["reranked"]["error"]:
                     st.error(f"Error: {results['reranked']['error']}")
                 else:
                     st.metric("Response Time", f"{results['reranked']['time_ms']:.0f}ms")
-                    render_chunk_viewer(reranked_chunks, "reranked", movements,
-                                    st.session_state.get('selected_chunk'))
+                    render_chunk_viewer(
+                        reranked_chunks, "reranked", movements, st.session_state.get('selected_chunk')
+                    )
